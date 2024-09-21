@@ -24,10 +24,7 @@ public class FileUploadHelper {
 
     /**
      * To upload the file in your local directory
-     * public final String UPLOAD_DIR = "D:\\client\\std\\development\\student-app\\student-app\\src\\main\\resources\\static\\image";
-     */
-
-    /**
+     * /**
      * To upload the file in your global location
      * String UPLOAD_DIR = new ClassPathResource("").getFile().getAbsolutePath();
      */
@@ -36,14 +33,14 @@ public class FileUploadHelper {
         Boolean isUploaded = false;
         String UPLOAD_DIR = new ClassPathResource("").getFile().getAbsolutePath();
         logger.info("ClassPath :: " + UPLOAD_DIR);
-        try{
+        try {
             Files.copy(
                     file.getInputStream(),
-                    Paths.get(UPLOAD_DIR+ File.separator + file.getOriginalFilename()),
+                    Paths.get(UPLOAD_DIR + File.separator + file.getOriginalFilename()),
                     StandardCopyOption.REPLACE_EXISTING
             );
             isUploaded = true;
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return isUploaded;
@@ -54,7 +51,7 @@ public class FileUploadHelper {
         Boolean isDeleted = false;
         List<String> listOfFilesNamesToDelete = filesDto.getListOfFileNames();
 
-        for(String fileName : listOfFilesNamesToDelete) {
+        for (String fileName : listOfFilesNamesToDelete) {
             logger.info("fileName :: " + fileName);
             Path path = java.nio.file.Paths.get(UPLOAD_DIR + File.separator + fileName);
             logger.info("Path :: " + path);

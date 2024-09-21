@@ -26,37 +26,37 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class AuthenticateController {
 
-	private final AuthenticationManager authenticationManager;
-	private final TokenProvider jwtTokenUtil;
-	
-	@Resource(name = Message.USERSERVICE)
-	private IUserService userService;
+    private final AuthenticationManager authenticationManager;
+    private final TokenProvider jwtTokenUtil;
 
-	@CrossOrigin("*")
-	@ApiOperation(value = Message.GENERATE_NEW_TOKEN)
-	@PostMapping
-	public ResponseEntity<BaseResponse> createAuthToken(
-			@RequestBody AuthenticationRequest authenticationRequest) {
-		try {
-			authenticationManager.authenticate(
-					new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
-			);
+    @Resource(name = Message.USERSERVICE)
+    private IUserService userService;
 
-			JwtUser jwtUser = userService.loadUserByUsername(authenticationRequest.getUsername());
-			final String token = jwtTokenUtil.generateToken(jwtUser);
+    @CrossOrigin("*")
+    @ApiOperation(value = Message.GENERATE_NEW_TOKEN)
+    @PostMapping
+    public ResponseEntity<BaseResponse> createAuthToken(
+            @RequestBody AuthenticationRequest authenticationRequest) {
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
+            );
 
-			BaseResponse<Object> response = BaseResponse.builder()
-					.successMsg(Message.TOKEN_GENERATED)
-					.token(token)
-					.build();
-			return ResponseEntity.ok(response);
+            JwtUser jwtUser = userService.loadUserByUsername(authenticationRequest.getUsername());
+            final String token = jwtTokenUtil.generateToken(jwtUser);
 
-		} catch (BadCredentialsException e) {
-			throw new BadRequestException(Message.INVALID_USERNAME_PASSWORD);
-		} catch (DisabledException e) {
-			throw new BadRequestException(Message.USER_BLOCKED);
-		}
+            BaseResponse<Object> response = BaseResponse.builder()
+                    .successMsg(Message.TOKEN_GENERATED)
+                    .token(token)
+                    .build();
+            return ResponseEntity.ok(response);
 
-	}
-	
+        } catch (BadCredentialsException e) {
+            throw new BadRequestException(Message.INVALID_USERNAME_PASSWORD);
+        } catch (DisabledException e) {
+            throw new BadRequestException(Message.USER_BLOCKED);
+        }
+
+    }
+
 }

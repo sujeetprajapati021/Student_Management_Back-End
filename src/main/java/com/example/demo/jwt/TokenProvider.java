@@ -3,6 +3,7 @@ package com.example.demo.jwt;
 
 import static com.example.demo.jwt.JwtConstants.JWT_USER_KEY;
 import static com.example.demo.jwt.JwtConstants.ROLE;
+
 import java.util.*;
 import java.util.function.Function;
 
@@ -54,7 +55,7 @@ public class TokenProvider {
     }
 
     public String generateToken(JwtUser jwtUser) {
-        System.out.println("JWT USER : "+jwtUser.toString());
+        System.out.println("JWT USER : " + jwtUser.toString());
         return Jwts.builder()
                 .setSubject(jwtUser.getUsername())
                 .claim(ROLE, jwtUser.getAuthorities())
@@ -62,7 +63,7 @@ public class TokenProvider {
                 //              .claim(ROLE_NAME, jwtUser.getRoleName())
                 .signWith(SignatureAlgorithm.HS256, jwtSecretSigningKey)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis()+jwtExpiration))
+                .setExpiration(new Date(System.currentTimeMillis() + jwtExpiration))
                 .compact();
     }
 
@@ -78,9 +79,9 @@ public class TokenProvider {
         final Jws<Claims> claimsJws = jwtParser.parseClaimsJws(token);
         final Claims claims = claimsJws.getBody();
 
-        System.out.println("SUBJECT->"+claims.getSubject());
-        System.out.println("JWT USER->"+claims.get(JWT_USER_KEY));
-        System.out.println("ROLE->"+claims.get(ROLE));
+        System.out.println("SUBJECT->" + claims.getSubject());
+        System.out.println("JWT USER->" + claims.get(JWT_USER_KEY));
+        System.out.println("ROLE->" + claims.get(ROLE));
 
         ArrayList<LinkedHashMap<String, String>> roleList = (ArrayList<LinkedHashMap<String, String>>) claims.get(ROLE);
         LinkedHashMap<String, String> roleMap = roleList.get(0);

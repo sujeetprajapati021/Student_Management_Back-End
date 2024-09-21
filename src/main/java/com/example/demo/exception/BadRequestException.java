@@ -9,6 +9,4 @@ public class BadRequestException extends RuntimeException {
         this.defaultMessage = defaultMessage;
     }
 
-
-
 }

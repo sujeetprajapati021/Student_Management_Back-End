@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface StudentRepository extends JpaRepository<StudentEntity, Integer> {
 
-	StudentEntity save(StudentEntity entity);
+    StudentEntity save(StudentEntity entity);
 
-	Optional<StudentEntity> findByMobileNumber(String mobNo);
+    Optional<StudentEntity> findByMobileNumber(String mobNo);
 }

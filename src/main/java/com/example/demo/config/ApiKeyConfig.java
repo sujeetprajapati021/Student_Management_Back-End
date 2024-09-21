@@ -8,7 +8,6 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-
 //@Configuration
 //@ConditionalOnProperty("api-key")
 @Component
@@ -43,8 +42,8 @@ public class ApiKeyConfig implements WebMvcConfigurer {
                         "/csrf",
                         "/"
                 );
-              //  .addPathPatterns("/api/**")
-               // .pathMatcher(new AntPathMatcher());
+        //  .addPathPatterns("/api/**")
+        // .pathMatcher(new AntPathMatcher());
     }
 
     @Override

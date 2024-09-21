@@ -9,14 +9,14 @@ import java.util.List;
 
 public interface IStudentService {
 
-	Boolean addStudentDetails(AddStudentRequest dto);
+    Boolean addStudentDetails(AddStudentRequest dto);
 
-	List<StudentResponse>  getAllStudent() throws JsonProcessingException;
+    List<StudentResponse> getAllStudent() throws JsonProcessingException;
 
-	StudentResponse getStudentById(Integer id);
+    StudentResponse getStudentById(Integer id);
 
-	Boolean updateDetails(Integer id, AddStudentRequest dto);
+    Boolean updateDetails(Integer id, AddStudentRequest dto);
 
-	Boolean deleteDetails(Integer id);
+    Boolean deleteDetails(Integer id);
 
 }

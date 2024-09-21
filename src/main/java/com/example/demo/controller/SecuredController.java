@@ -7,11 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class SecuredController {
-
     /**
      * test APIs to illustrate the APIs authorities in spring security.
      */
-
     @PreAuthorize("hasAuthority('SUPER_ADMIN')")
     @GetMapping("/api/private/hello")
     public String testSecuredMethod() {

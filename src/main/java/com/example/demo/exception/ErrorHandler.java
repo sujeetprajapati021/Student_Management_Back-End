@@ -24,8 +24,8 @@ public class ErrorHandler {
         return new ResponseEntity<>(response, null, HttpStatus.FORBIDDEN);
     }
 
-   @ExceptionHandler(org.springframework.security.access.AccessDeniedException.class)
-  public ResponseEntity<BaseResponse<Object>> handleSpringSecurityAccessDeniedException(){
+    @ExceptionHandler(org.springframework.security.access.AccessDeniedException.class)
+    public ResponseEntity<BaseResponse<Object>> handleSpringSecurityAccessDeniedException() {
         BaseResponse<Object> response = BaseResponse.builder()
                 .status(Status.FAILURE)
                 .error("Access Denied")
@@ -33,9 +33,9 @@ public class ErrorHandler {
                 .build();
 
         return new ResponseEntity<>(response, null, HttpStatus.FORBIDDEN);
-   }
+    }
 
-   @ExceptionHandler(BadRequestException.class)
+    @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<BaseResponse<Object>> handleOtherException(Exception ex) {
         BaseResponse<Object> response = BaseResponse.builder()
                 .status(Status.FAILURE)
@@ -44,5 +44,5 @@ public class ErrorHandler {
                 .build();
 
         return new ResponseEntity<>(response, null, HttpStatus.INTERNAL_SERVER_ERROR);
-   }
+    }
 }

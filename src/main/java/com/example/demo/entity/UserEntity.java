@@ -19,8 +19,8 @@ import lombok.EqualsAndHashCode;
 public class UserEntity extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="admin_id", unique=true, nullable=false, length=10)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "admin_id", unique = true, nullable = false, length = 10)
     private long adminId;
 
     @Column(name = "type_id")
@@ -48,6 +48,6 @@ public class UserEntity extends BaseEntity {
     @Column(name = "email_id")
     private String emailId;
 
-    @Column(name="deleted")
+    @Column(name = "deleted")
     private Boolean deleted = Boolean.FALSE;
 }

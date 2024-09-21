@@ -11,7 +11,6 @@ import lombok.Data;
 public class BaseResponse<T> {
 
     String successMsg;
-
     @Builder.Default
     Status status = Status.SUCCESS;
 

@@ -12,33 +12,33 @@ import java.util.Optional;
 
 @Component
 public class StudentDaoImpl implements StudentDao {
-	
-	@Autowired
-	private StudentRepository studentRepository;
 
-	@Override
-	public StudentEntity save(StudentEntity entity) {
-		return studentRepository.save(entity);
-	}
+    @Autowired
+    private StudentRepository studentRepository;
 
-	@Override
-	public void delete(StudentEntity entity) {
-		studentRepository.delete(entity);
-	}
+    @Override
+    public StudentEntity save(StudentEntity entity) {
+        return studentRepository.save(entity);
+    }
 
-	@Override
-	public Optional<StudentEntity> findById(int id) {
-		return studentRepository.findById(id);
-	}
+    @Override
+    public void delete(StudentEntity entity) {
+        studentRepository.delete(entity);
+    }
 
-	@Override
-	public Optional<StudentEntity> findByMobileNumber(String mobNo) {
-		return studentRepository.findByMobileNumber(mobNo);
-	}
+    @Override
+    public Optional<StudentEntity> findById(int id) {
+        return studentRepository.findById(id);
+    }
 
-	@Override
-	public List<StudentEntity> findAll() {
-		return studentRepository.findAll();
-	}
+    @Override
+    public Optional<StudentEntity> findByMobileNumber(String mobNo) {
+        return studentRepository.findByMobileNumber(mobNo);
+    }
+
+    @Override
+    public List<StudentEntity> findAll() {
+        return studentRepository.findAll();
+    }
 
 }

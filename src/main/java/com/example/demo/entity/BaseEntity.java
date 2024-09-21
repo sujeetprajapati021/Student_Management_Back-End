@@ -17,6 +17,7 @@ import java.sql.Timestamp;
 
 public class BaseEntity {
 
+
     @CreationTimestamp
     @Column(name = "create_at")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")

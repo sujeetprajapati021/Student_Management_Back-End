@@ -17,18 +17,18 @@ public enum AdminType {
     }
 
     public static Integer findLookupIdByName(String name) {
-        for(AdminType admin : AdminType.values()) {
+        for (AdminType admin : AdminType.values()) {
 
-            if(admin.name().equals(name)) {
+            if (admin.name().equals(name)) {
                 return admin.getLookupId();
             }
         }
-        return  null;
+        return null;
     }
 
     public static AdminType findAdminTypeByLookupId(Integer lookupId) {
-        for(AdminType admin : AdminType.values()) {
-            if(admin.getLookupId().equals(lookupId)) {
+        for (AdminType admin : AdminType.values()) {
+            if (admin.getLookupId().equals(lookupId)) {
                 return admin;
             }
         }

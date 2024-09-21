@@ -21,18 +21,18 @@ public enum AdminStatus {
     }
 
     public static Integer findLookupIdByName(String name) {
-        for(AdminStatus admin : AdminStatus.values()) {
+        for (AdminStatus admin : AdminStatus.values()) {
 
-            if(admin.name().equals(name)) {
+            if (admin.name().equals(name)) {
                 return admin.getLookupId();
             }
         }
-        return  null;
+        return null;
     }
 
     public static String findAdminTypeByLookupId(Integer lookupId) {
-        for(AdminStatus admin : AdminStatus.values()) {
-            if(admin.getLookupId().equals(lookupId)) {
+        for (AdminStatus admin : AdminStatus.values()) {
+            if (admin.getLookupId().equals(lookupId)) {
                 return admin.name();
             }
         }

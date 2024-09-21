@@ -6,5 +6,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface IFileUploadService {
     BaseResponse<Object> uploadFile(MultipartFile file);
+
     BaseResponse<Object> deleteFile(FileDeleteDto request);
 }

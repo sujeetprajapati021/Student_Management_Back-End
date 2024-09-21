@@ -7,5 +7,5 @@ import java.util.List;
 @Data
 public class FileDeleteDto {
 
-	List<String> listOfFileNames;
+    List<String> listOfFileNames;
 }

@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Address {
 
+
     @NotBlank(message = "address must not be blank")
     private String address1;
 

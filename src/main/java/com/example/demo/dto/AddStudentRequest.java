@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddStudentRequest {
-    
+
     @NotBlank(message = "student first name must not be blank")
     private String name;
     @NotBlank(message = "student age must not be blank")

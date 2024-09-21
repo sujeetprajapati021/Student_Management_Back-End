@@ -1,11 +1,9 @@
 package com.example.demo.jwt;
 
 
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-
 
 
 import com.example.demo.enums.Status;
@@ -44,7 +42,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private List<String> excludedUrls;
 
-    private String tokenHeader="Authorization";
+    private String tokenHeader = "Authorization";
 
     @Autowired
     private IUserService userService;
@@ -75,22 +73,21 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         );
 
 
-
-        if (excludedUrls.stream().noneMatch(url->
+        if (excludedUrls.stream().noneMatch(url ->
                 req.getRequestURL().toString().toLowerCase().contains(url.toLowerCase()))
                 && !req.getMethod().equals("OPTIONS")) {
 //			System.out.println("RequestURL : " + req.getRequestURL().toString().toLowerCase());
 //			System.out.println("Method Type : " + req.getMethod().toString());
             String authToken = req.getHeader(this.tokenHeader);
 
-            if(null == authToken) {
+            if (null == authToken) {
                 logger.error("Token can not be left blank");
                 prepareErrorResponse(res, "Token can not be left blank");
                 return;
             }
 
             try {
-                if(!authToken.startsWith("Bearer ")) {
+                if (!authToken.startsWith("Bearer ")) {
                     logger.info("Token must be starts with Bearer");
                     prepareErrorResponse(res, "Token must be starts with Bearer");
                     return;

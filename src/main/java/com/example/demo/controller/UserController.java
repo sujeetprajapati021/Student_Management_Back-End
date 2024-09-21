@@ -11,25 +11,24 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 @Api(tags = "User Controller")
 @RestController
 @RequestMapping("/api")
 @AllArgsConstructor
 public class UserController {
 
-	private final IUserService userService;
+    private final IUserService userService;
 
-//	@PreAuthorize("hasAuthority('SUPER_ADMIN')")
-	@CrossOrigin("*")
-	@ApiOperation(value = "CREATE USER API")
-	@PostMapping("/addUser")
-	public ResponseEntity<BaseResponse<Object>> addUser(
-			@Valid @RequestBody AddUserRequest dto) {
-		BaseResponse<Object> response = BaseResponse.builder()
-				.successMsg("User Added")
-				.data(userService.addUser(dto))
-				.build();
-		return ResponseEntity.ok(response);
-	}
+    //	@PreAuthorize("hasAuthority('SUPER_ADMIN')")
+    @CrossOrigin("*")
+    @ApiOperation(value = "CREATE USER API")
+    @PostMapping("/addUser")
+    public ResponseEntity<BaseResponse<Object>> addUser(
+            @Valid @RequestBody AddUserRequest dto) {
+        BaseResponse<Object> response = BaseResponse.builder()
+                .successMsg("User Added")
+                .data(userService.addUser(dto))
+                .build();
+        return ResponseEntity.ok(response);
+    }
 }

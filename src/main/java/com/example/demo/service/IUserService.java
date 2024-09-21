@@ -8,5 +8,6 @@ import org.springframework.stereotype.Service;
 public interface IUserService {
 
     JwtUser loadUserByUsername(String username);
+
     Boolean addUser(AddUserRequest request);
 }

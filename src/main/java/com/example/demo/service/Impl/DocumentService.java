@@ -84,15 +84,15 @@ public class DocumentService {
 
         String extension = StringUtils.getFilenameExtension(file.getOriginalFilename()).toLowerCase();
 
-        if(!(extension.equals("jpg") || extension.equals("jpeg")
+        if (!(extension.equals("jpg") || extension.equals("jpeg")
                 || extension.equals("png") || extension.equals("pdf")))
             throw new ResponseStatusException(
-                HttpStatus.BAD_REQUEST,
-                "Please upload the file with JPG, JPEG, PDF and PNG extension"
-        );
+                    HttpStatus.BAD_REQUEST,
+                    "Please upload the file with JPG, JPEG, PDF and PNG extension"
+            );
 
         if (isPdfFile(file.getContentType(), fileName)) {
-            if(isPasswordProtected(file))
+            if (isPasswordProtected(file))
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "File is password protected.");
         }
     }

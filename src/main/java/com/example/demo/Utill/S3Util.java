@@ -53,8 +53,9 @@ public class S3Util {
     public URL generateSignedUrlWithTime(String key, Date expiration) {
         try {
             return s3Client.generatePresignedUrl(bucketName, key, expiration);
-        } catch(SdkClientException ex) {
+        } catch (SdkClientException ex) {
             log.error("Error fetching doc signed URL with bucketName: {} and fileName: {}", bucketName, key);
         }
         return null;
-    }}
+    }
+}

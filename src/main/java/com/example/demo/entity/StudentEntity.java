@@ -15,44 +15,44 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@Table (name="student_table")
+@Table(name = "student_table")
 public class StudentEntity extends BaseEntity {
 
-    @ApiModelProperty(notes="auto generated")
+    @ApiModelProperty(notes = "auto generated")
     @Id
     @GeneratedValue
     @Column(name = "student_id")
     private Integer studentId;
 
-    @ApiModelProperty(required=true, notes="enter name")
+    @ApiModelProperty(required = true, notes = "enter name")
     @Column(name = "name")
     @Size(
-            min=6,
-            max=18,
-            message="property '${validatedValue}' should be between {min} and {max} characters")
+            min = 6,
+            max = 18,
+            message = "property '${validatedValue}' should be between {min} and {max} characters")
     private String name;
 
-    @ApiModelProperty(required=true, notes="enter age")
+    @ApiModelProperty(required = true, notes = "enter age")
     @Column(name = "age")
     private String age;
 
-    @ApiModelProperty(required=true, notes="enter branch")
+    @ApiModelProperty(required = true, notes = "enter branch")
     @Column(name = "branch")
     private String branch;
 
-    @ApiModelProperty(required=true, notes="enter email")
+    @ApiModelProperty(required = true, notes = "enter email")
     @Column(name = "email")
     private String email;
 
-    @ApiModelProperty(required=true, notes="enter email")
+    @ApiModelProperty(required = true, notes = "enter email")
     @Column(name = "mobile_no")
     private String mobileNumber;
 
-    @ApiModelProperty(required=true)
+    @ApiModelProperty(required = true)
     @Column(name = "student_no")
     private String studentNo;
 
-    @Column(name="deleted")
+    @Column(name = "deleted")
     private Boolean deleted = Boolean.FALSE;
 
 

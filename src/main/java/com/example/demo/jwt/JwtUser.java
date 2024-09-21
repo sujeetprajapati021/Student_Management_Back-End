@@ -17,7 +17,6 @@ public class JwtUser implements UserDetails {
     private String password;
     private AdminType adminType;// To set the authorities
 
-
     private static final long serialVersionUID = 1L;
 
     @Override

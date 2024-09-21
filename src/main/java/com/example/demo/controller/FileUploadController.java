@@ -10,21 +10,21 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("/api/file")
 public class FileUploadController {
-	private final IFileUploadService fileUploadService;
+    private final IFileUploadService fileUploadService;
 
-	public FileUploadController(IFileUploadService fileUploadService) {
-		this.fileUploadService = fileUploadService;
-	}
+    public FileUploadController(IFileUploadService fileUploadService) {
+        this.fileUploadService = fileUploadService;
+    }
 
-	@PostMapping("/upload")
-	public ResponseEntity<BaseResponse<Object>> uploadFile(
-			@RequestParam MultipartFile file) {
-		return ResponseEntity.ok(fileUploadService.uploadFile(file));
-	}
+    @PostMapping("/upload")
+    public ResponseEntity<BaseResponse<Object>> uploadFile(
+            @RequestParam MultipartFile file) {
+        return ResponseEntity.ok(fileUploadService.uploadFile(file));
+    }
 
-	@DeleteMapping("/delete")
-	public ResponseEntity<BaseResponse<Object>> deleteFile(
-			@RequestBody FileDeleteDto filesDto) {
-		return ResponseEntity.ok(fileUploadService.deleteFile(filesDto));
-	}
+    @DeleteMapping("/delete")
+    public ResponseEntity<BaseResponse<Object>> deleteFile(
+            @RequestBody FileDeleteDto filesDto) {
+        return ResponseEntity.ok(fileUploadService.deleteFile(filesDto));
+    }
 }

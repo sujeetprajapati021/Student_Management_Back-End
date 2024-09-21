@@ -15,32 +15,31 @@ import springfox.documentation.spring.web.plugins.Docket;
 import java.util.Arrays;
 
 import java.util.List;
-//@Configuration
 
 public class SpringFoxConfig {
-	@Bean
-	public Docket postsApi() {
+    @Bean
+    public Docket postsApi() {
 
-		return new Docket(DocumentationType.SWAGGER_2)
-				.groupName("public-api")
-				.apiInfo(apiInfo())
-				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.studentapp"))
-				.paths(PathSelectors.any())
-				.build()
-				.securityContexts(Lists.newArrayList(securityContext()))
-				.securitySchemes(Lists.newArrayList(apiKey()));
-	}
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("public-api")
+                .apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.studentapp"))
+                .paths(PathSelectors.any())
+                .build()
+                .securityContexts(Lists.newArrayList(securityContext()))
+                .securitySchemes(Lists.newArrayList(apiKey()));
+    }
 
-	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("Student APIs")
-				.description("Student API reference for developers")
-				.termsOfServiceUrl("http://student.com")
-				.license("Student License")
-				.licenseUrl("studentabc@gmail.com")
-				.version("1.0")
-				.build();
-	}
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder().title("Student APIs")
+                .description("Student API reference for developers")
+                .termsOfServiceUrl("http://student.com")
+                .license("Student License")
+                .licenseUrl("studentabc@gmail.com")
+                .version("1.0")
+                .build();
+    }
 
 //	@SuppressWarnings("deprecation")
 //	@Bean
@@ -49,28 +48,28 @@ public class SpringFoxConfig {
 //				ApiKeyVehicle.HEADER, "AUTHORIZATION", null);
 //	}
 
-	private List<ApiKey> apiKey() {
-		return Arrays.asList(
-				new ApiKey("AUTHORIZATION", "Authorization", "header"),
-				new ApiKey("Api Key", "x-api-key", "header")
-		);
-	}
+    private List<ApiKey> apiKey() {
+        return Arrays.asList(
+                new ApiKey("AUTHORIZATION", "Authorization", "header"),
+                new ApiKey("Api Key", "x-api-key", "header")
+        );
+    }
 
-	private SecurityContext securityContext() {
-		return SecurityContext
-				.builder()
-				.securityReferences(defaultAuth())
-				.forPaths(PathSelectors.regex("/api.*"))
-				.build();
-	}
+    private SecurityContext securityContext() {
+        return SecurityContext
+                .builder()
+                .securityReferences(defaultAuth())
+                .forPaths(PathSelectors.regex("/api.*"))
+                .build();
+    }
 
-	private List<SecurityReference> defaultAuth() {
-		AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
-		AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
-		authorizationScopes[0] = authorizationScope;
-		return Lists.newArrayList(
-				new SecurityReference("AUTHORIZATION", authorizationScopes),
-				new SecurityReference("Api Key", authorizationScopes)
-		);
-	}
+    private List<SecurityReference> defaultAuth() {
+        AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
+        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+        authorizationScopes[0] = authorizationScope;
+        return Lists.newArrayList(
+                new SecurityReference("AUTHORIZATION", authorizationScopes),
+                new SecurityReference("Api Key", authorizationScopes)
+        );
+    }
 }
