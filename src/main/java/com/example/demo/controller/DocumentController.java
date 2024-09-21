@@ -11,10 +11,14 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/document")
-@AllArgsConstructor
+
 public class DocumentController {
 
     private final DocumentService docUploadService;
+
+    public DocumentController(DocumentService docUploadService) {
+        this.docUploadService = docUploadService;
+    }
 
     @PutMapping("/upload")
     public BaseResponse<Object> uploadToS3(

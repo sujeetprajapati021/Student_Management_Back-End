@@ -43,6 +43,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/api/auth",
+                                "/swagger-ui/index.html",
                                 "/api/ping",
                                 "/api/addUser",
                                 "/api/student/add",

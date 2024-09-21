@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 @Slf4j
@@ -19,7 +21,25 @@ public class SecurityInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+      //  String reqAPIKey = request.getHeader("x-api-key");
         String reqAPIKey = request.getHeader("x-api-key");
+
+        // Define excluded URLs where the API key is not required
+        List<String> excludedUrls = Arrays.asList(
+                "/swagger-ui.html",
+                "/swagger-ui/index.html",  // Ensure the index.html for Swagger is excluded
+                "/v2/api-docs",
+                "/swagger-resources/**",
+                "/webjars/**"
+        );
+
+        // Skip API key validation for the excluded URLs
+        String requestURI = request.getRequestURI().toLowerCase();
+        boolean isExcludedUrl = excludedUrls.stream().anyMatch(requestURI::contains);
+
+        if (isExcludedUrl) {
+            return true; // Skip API key validation for Swagger endpoints
+        }
 
         log.info("api-key received in request :: {}", reqAPIKey);
         if (!Objects.equals(APIKey, reqAPIKey)) {
@@ -27,7 +47,10 @@ public class SecurityInterceptor implements HandlerInterceptor {
             throw new AccessDeniedException("Unauthorised request, Missing api-key in header");
         }
         return HandlerInterceptor.super.preHandle(request, response, handler);
-    }
+
+
+
+
 
 //    @Override
 //    public void postHandle(HttpServletRequest request, HttpServletResponse response,
@@ -43,4 +66,4 @@ public class SecurityInterceptor implements HandlerInterceptor {
 //        System.out.println("Request and Response is completed");
 //    }
 
-}
+}}

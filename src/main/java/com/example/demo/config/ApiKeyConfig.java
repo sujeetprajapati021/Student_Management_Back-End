@@ -8,10 +8,12 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+
 //@Configuration
 //@ConditionalOnProperty("api-key")
 @Component
 @Import(SpringFoxConfig.class)
+
 public class ApiKeyConfig implements WebMvcConfigurer {
 
     @Value("${api.key}")

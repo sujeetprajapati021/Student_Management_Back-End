@@ -62,6 +62,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 "/springfox-swagger-ui",
                 "/swagger-resources",
                 "/swagger-ui.html",
+                "/swagger-ui/index.html",  // Include the index.html for Swagger UI
                 "/v2/api-docs",
                 "/api/auth",
                 "/api/ping",
@@ -72,6 +73,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 "/actuator/health",
                 "/image/**"
         );
+
+
 
         if (excludedUrls.stream().noneMatch(url->
                 req.getRequestURL().toString().toLowerCase().contains(url.toLowerCase()))
